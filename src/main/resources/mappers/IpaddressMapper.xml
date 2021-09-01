@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!---->
+<mapper namespace="com.example.ipmanagement.mapper.IpaddressMapper">
+    <!--插入数据
+     Integer insert(IpInfo ipInfo);-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO ipaddress(ipaddr, used)
+        VALUES (#{ipaddr}, #{used})
+    </insert>
+
+    <!--删除所有数据
+    Integer delete();-->
+    <delete id="delete">
+        DELETE from ipaddress
+    </delete>
+
+    <!--获取一个可用ip
+    String getIp();-->
+    <select id="getIp" resultType="com.example.ipmanagement.entity.IpInfo">
+        SELECT * from ipaddress
+        WHERE used=0
+        order by id asc limit 1
+    </select>
+
+    <!--获取start ip
+    String getStartIp();-->
+    <select id="getStartIp" resultType="com.example.ipmanagement.entity.IpInfo">
+        SELECT * from ipaddress
+        order by id asc limit 1
+    </select>
+
+    <!--获取结束ip
+    String getEndIp();-->
+    <select id="getEndIp" resultType="com.example.ipmanagement.entity.IpInfo">
+        SELECT * from ipaddress
+        order by id desc  limit 1
+    </select>
+</mapper>
