@@ -17,6 +17,16 @@
         DELETE from ipaddress
     </delete>
 
+    <!-- 修改IP地址的状态
+    Integer updateIp(IpInfo ipInfo);-->
+    <update id="updateIp">
+        UPDATE  ipaddress
+        SET
+            used=#{used}
+        WHERE
+            ipaddr=#{ipaddr}
+    </update>
+
     <!--获取一个可用ip
     String getIp();-->
     <select id="getIp" resultType="com.example.ipmanagement.entity.IpInfo">

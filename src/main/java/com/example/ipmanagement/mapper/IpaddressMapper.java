@@ -19,7 +19,20 @@ public interface IpaddressMapper {
      */
     IpInfo getIp();
 
+    /**
+     * 获取起始IP地址
+     * @return
+     */
     IpInfo getStartIp();
 
+    /**
+     * 获取结尾IP地址
+     * @return
+     */
     IpInfo getEndIp();
+
+    /**
+     * 修改IP地址的使用状态
+     */
+    Integer updateIp(IpInfo ipInfo);
 }
